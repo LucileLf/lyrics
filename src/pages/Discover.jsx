@@ -1,8 +1,29 @@
-import { Error, Loader, SongCard } from "../components";
-import { genres } from "../assets/constants";
+import { useSelector } from 'react-redux';
+// useDispatch hook returns a reference to the dispatch function from the Redux store. You may use it to dispatch actions as needed.
+// dispatch() dispatches an action. This is the only way to trigger a state change.
+// useSelector allows you to extract data from the Redux store state for use in this component, using a selector function.
+
+import { Error, Loader, SongCard } from '../components';
+import { genres } from '../assets/constants';
+
+import { useGetTopChartsQuery } from '../redux/services/shazam';
 
 const Discover = () => {
-  const genreTitle = "Pop";
+  // const dispatch = useDispatch();
+  const { activeSong, isPlaying } = useSelector((state) => state.player); // Redux has a global state, split into slices for functionalities (chose which slice with useSelector)
+  // cf initialState in playerSlice
+  const { data, isFetching, error } = useGetTopChartsQuery();
+  const genreTitle = 'Pop';
+  // if (data && data.tracks) {
+  //   // Now you can safely access data.tracks
+  //   console.log(data.tracks);
+  // }
+  // console.log(data?.tracks)
+
+  if (isFetching) return <Loader title="Loading songs..." />;
+
+  if (error) return <Error />;
+
   return (
     <div className="flex flex-col">
       <div className="w-full flex justify-between items-center sm:flex-rox flex-col mt-4 mb-10">
@@ -22,10 +43,10 @@ const Discover = () => {
         </select>
       </div>
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {/* fetch songs from API 
+        {/* fetch songs from API
             song card for each */}
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((song, i) => (
-          <SongCard key={song.key} song={song} i={i} />
+        {data?.tracks.map((song, i) => (
+          <SongCard key={song.key} song={song} i={i} activeSong={activeSong} isPlaying={isPlaying} data={data} />
         ))}
       </div>
     </div>
