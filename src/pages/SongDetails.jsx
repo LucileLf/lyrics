@@ -22,7 +22,7 @@ const SongDetails = () => {
   if (isFetchingSongDetails || isFetchingSongRelated) return <Loader title="Loading..." />;
 
   if (!songData) return <Error />;
-  //console.log(songData);
+  // console.log(songData);
   return (
     <div className="flex flex-col">
 
