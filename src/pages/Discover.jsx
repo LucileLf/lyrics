@@ -18,12 +18,11 @@ const Discover = () => {
   //   // Now you can safely access data.tracks
   //   console.log(data.tracks);
   // }
-  // console.log(data)
 
   if (isFetching) return <Loader title="Loading songs..." />;
 
   if (error) return <Error />;
-
+  // console.log(data);
   return (
     <div className="flex flex-col">
       <div className="w-full flex justify-between items-center sm:flex-rox flex-col mt-4 mb-10">
