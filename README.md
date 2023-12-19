@@ -1,5 +1,6 @@
-Shazam Core API
-
+RapidAPI
+Shazam API
+Tailwind
 
 # Project Lyrics
 
