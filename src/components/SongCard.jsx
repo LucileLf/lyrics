@@ -36,5 +36,4 @@ const SongCard = ({ song, i, activeSong, isPlaying, data }) => {
     </div>
   );
 };
-
 export default SongCard;

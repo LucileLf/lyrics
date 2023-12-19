@@ -7,9 +7,9 @@ import { links } from '../assets/constants';
 
 const NavLinks = ({ handleClick }) => (
   <div className="mt-10">
-    {links.map((item) => (
+    {links.map((item, i) => (
       <NavLink
-        key="item"
+        key={i}
         to={item.to}
         className="flex flex-row justify-start items-center my-8 text-sm font-medium text-gray-400 hover:text-cyan-400 "
         onClick={() => handleClick && handleClick()} // call handleClick only on mobile
