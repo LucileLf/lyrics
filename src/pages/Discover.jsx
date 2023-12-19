@@ -18,7 +18,7 @@ const Discover = () => {
   //   // Now you can safely access data.tracks
   //   console.log(data.tracks);
   // }
-  // console.log(data?.tracks)
+  // console.log(data)
 
   if (isFetching) return <Loader title="Loading songs..." />;
 

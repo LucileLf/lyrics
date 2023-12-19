@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link, useHref } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -61,6 +61,7 @@ const TopPlay = () => {
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
+
   const handlePlayClick = (song, i) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
@@ -120,7 +121,7 @@ const TopPlay = () => {
             modules={[FreeMode]}
             className="mt-4"
           >
-            {topPlays?.map((song, i) => (
+            {topPlays?.map((song) => (
               <SwiperSlide
                 key={song?.key}
                 style={{ width: '25%', height: 'auto' }}
@@ -136,7 +137,7 @@ const TopPlay = () => {
         </div>
       </div>
     );
-  }
+  } return '';
 };
 
 export default TopPlay;
