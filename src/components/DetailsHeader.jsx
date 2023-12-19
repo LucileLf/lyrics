@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 
-const DetailsHeader = ({ artistId, artistData, songData }) => { // used for both artist details and song details
+const DetailsHeader = ({ artistId, songid, artistData, songData }) => { // used for both artist details and song details
   // console.log("songData", songData);
 
-  // GET DETAILS FROM SONG DATA
-  const coverArt = songData?.resources['shazam-songs']['594265720'].attributes.images.coverArt;
-  const artistNameFromSongData = songData?.resources.artists['577261450'].attributes.name;
-  // console.log("artistNameFromSongData", artistNameFromSongData);
-  const artistIdFromSongData = songData?.resources.artists['577261450'].id;
+  // GET DETAILS FROM SongData and SongId
+  const coverArt = songData?.resources['shazam-songs'][songid].attributes.images.coverArt;
+  const songTitleFromSongData = songData?.resources['shazam-songs'][songid].attributes.title;
+
+  const artistIdFromSongData = Object.keys(songData?.resources.artists)[0];
+  const artistNameFromSongData = songData?.resources.artists[artistIdFromSongData].attributes.name;
+  // console.log(artistNameFromSongData);
   // console.log(artistIdFromSongData);
-  const songTitleFromSongData = songData?.resources['shazam-songs']['594265720'].attributes.title;
-  // console.log(songTitleFromSongData);
 
   // GET DETAILS FROM ARTISTDATA
   const artistFromArtistId = artistData?.artists[artistId]?.attributes;
