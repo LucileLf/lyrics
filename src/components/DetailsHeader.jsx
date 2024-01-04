@@ -9,12 +9,13 @@ const DetailsHeader = ({ artistId, songid, artistData, songData }) => { // used 
 
   const artistIdFromSongData = Object.keys(songData?.resources.artists)[0];
   const artistNameFromSongData = songData?.resources.artists[artistIdFromSongData].attributes.name;
+  const genreFromSongData = songData?.resources['shazam-songs'][songid].attributes.genres.primary;
   // console.log(artistNameFromSongData);
-  // console.log(artistIdFromSongData);
+  //console.log(artistIdFromSongData);
 
   // GET DETAILS FROM ARTISTDATA
   const artistFromArtistId = artistData?.artists[artistId]?.attributes;
-
+  
   return (
     <div className="relative w-full flex flex-col">
       <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-28" />
@@ -27,6 +28,9 @@ const DetailsHeader = ({ artistId, songid, artistData, songData }) => { // used 
               <p className="text-base text-gray-400 mt-2">{artistNameFromSongData}</p>
             </Link>
           )}
+          <p className="text-base text-gray-400 mt-2">
+            {genreFromSongData}
+          </p>
           {/* <p className="text-base text-gray-400 mt-2">{artistId ? artist?.genreNames[0] : songData?.resources.artists['577261450'].attributes.name}</p> */}
         </div>
       </div>
