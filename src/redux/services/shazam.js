@@ -26,7 +26,7 @@ export const shazamApi = createApi({
   endpoints: (builder) => ({
     getTopCharts: builder.query({ query: () => '/charts/track' }),
     getSongDetails: builder.query({ query: (songid) => `/shazam-songs/get-details?id=${songid}&locale=en-US` }),
-    // getSongRelated: builder.query({ query: (artistid) => `/artists/get-top-songs?id=${artistid}` }),
+    // getSongRelated: builder.query({ query: (songid) => `/songs/list-recommendations?key=${songid}&locale=en-US'` }),
     getSongRelated: builder.query({ query: (songid) => `/shazam-songs/list-similarities?id=track-similarities-id-${songid}&locale=en-US` }),
   }),
 });
