@@ -25,9 +25,10 @@ export const shazamApi = createApi({
   }),
   endpoints: (builder) => ({
     getTopCharts: builder.query({ query: () => '/charts/track' }),
-    getSongDetails: builder.query({ query: (songid) => `/shazam-songs/get-details?id=${songid}&locale=en-US` }),
-    // getSongRelated: builder.query({ query: (songid) => `/songs/list-recommendations?key=${songid}&locale=en-US'` }),
-    getSongRelated: builder.query({ query: (songid) => `/shazam-songs/list-similarities?id=track-similarities-id-${songid}&locale=en-US` }),
+    getSongDetails: builder.query({ query: (songId) => `/shazam-songs/get-details?id=${songId}&locale=en-US` }),
+    getSongRelated: builder.query({ query: (songId) => `/shazam-songs/list-similarities?id=track-similarities-id-${songId}&locale=en-US` }),
+    getArtistDetails: builder.query({ query: (artistId) => `/artists/get-details?id=${artistId}&locale=en-US` }),
+    getArtistTracks: builder.query({ query: (artistId) => `/artists/get-top-songs?id=${artistId}&locale=en-US` }),
   }),
 });
 
@@ -35,6 +36,8 @@ export const {
   useGetTopChartsQuery,
   useGetSongDetailsQuery,
   useGetSongRelatedQuery,
+  useGetArtistDetailsQuery,
+  useGetArtistTracksQuery,
 } = shazamApi;
 
 // GENIUS API

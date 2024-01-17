@@ -5,6 +5,7 @@ import TopPlay from './TopPlay';
 import ArtistCard from './ArtistCard';
 import DetailsHeader from './DetailsHeader';
 import SongBar from './SongBar';
+// eslint-disable-next-line import/no-named-as-default
 import RelatedSongs from './RelatedSongs';
 import MusicPlayer from './MusicPlayer';
 import Loader from './Loader';
